@@ -21,10 +21,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          archive="plutus-ai-source.zip"
+          archive="plutus-ai-source.tar.gz"
           test -f "$archive"
           temp_dir="$(mktemp -d)"
-          unzip -q "$archive" -d "$temp_dir"
+          tar -xzf "$archive" -C "$temp_dir"
           cp -a "$temp_dir/." .
           rm -f "$archive"
           git config user.name "github-actions[bot]"
